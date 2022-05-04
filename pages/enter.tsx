@@ -1,8 +1,6 @@
 import { useState } from "react";
+import { cls } from "../libs/utils";
 
-function cls(...classnames:string[]){
-    return classnames.join(" ");
-}
 
 export default function Enter() {
 
