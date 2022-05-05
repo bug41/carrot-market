@@ -3,7 +3,7 @@ import Layout from "../../components/layout";
 
 const Create: NextPage = () => {
     return (
-        <Layout title="라이브" hasTabBar>
+        <Layout title="홈" hasTabBar>
             <div className="space-y-5 py-10 px-4">
                 <div className="my-5">
                     <label 
