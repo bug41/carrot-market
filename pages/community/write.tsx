@@ -13,3 +13,5 @@ const Write: NextPage = () => {
     </Layout>
   );
 };
+
+export default Write;

@@ -88,3 +88,5 @@ const CommunityPostDetail: NextPage = () => {
     </Layout>
   );
 };
+
+export default CommunityPostDetail;
