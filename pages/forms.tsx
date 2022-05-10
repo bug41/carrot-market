@@ -1,55 +1,37 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+
+// Less code (OK)
+// Better Validation
+// Better Errors (set, clear, display)
+// Have control over inputs
+// Don't deal with events (OK)
+// Easier Inputs (OK)
 
 export default function Forms(){
 
-    const [userName, setUserName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [formErros, setFormErros] = useState("");
-    
-    const onUserNameChange = (event:React.SyntheticEvent<HTMLInputElement>) => {
-        const {
-            currentTarget: {value},
-        } = event;
-        setUserName(value);
+    const {register, handleSubmit} = useForm();    
+    const onValid = () => {
+        console.log("im valid bby")
     }
-
-    const onEmailChange = (event:React.SyntheticEvent<HTMLInputElement>) => {
-        const {
-            currentTarget: {value},
-        } = event;
-        setEmail(value);
-    }
-
-    const onPasswordChange = (event:React.SyntheticEvent<HTMLInputElement>) => {
-        const {
-            currentTarget: {value},
-        } = event;
-        setPassword(value);
-    }
-
-    const onSubmit = (event: React.SyntheticEvent<HTMLInputElement>) => {
-        event.preventDefault();
-
-        if(userName === "" || email === "" || password === "") {
-            setFormErros("All fields are required");
-        }
-
-        console.log(userName,email,password);        
-    };
-
 
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit(onValid)}>
+            <input
+            {...register("userName", {
+                required:true,
+            })}
+                type="text" placeholder="UserName" />
             <input 
-                onChange={onUserNameChange}
-                value={userName} type="text" placeholder="UserName" required minLength={5}/>
+            {...register("email", {
+                required:true,
+            })}
+                type="email" placeholder="email"/>
             <input 
-                onChange={onEmailChange}
-                value={email} type="email" placeholder="email" required/>
-            <input 
-                onChange={onPasswordChange}
-                value={password} type="password" placeholder="Password" required/>
+            {...register("password", {
+                required:true,
+            })}
+                type="password" placeholder="Password"/>
 
             <input type="submit" value="Create Account"/>
         </form>
